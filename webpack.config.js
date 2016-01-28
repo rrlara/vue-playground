@@ -5,7 +5,7 @@ module.exports = {
   output: {
     path: './static',
     publicPath: '/static/',
-    filename: 'build.js'
+    filename: 'build_vue.js'
   },
   module: {
     loaders: [
