@@ -1,0 +1,170 @@
+<template>
+  <div class="news-view" :class="">
+    <!-- item list -->
+
+    <!-- Modal compnent -->
+    <modal :show.sync="showModalFull" :item="itemMap"></modal>
+
+    <div class="page-content mapWrapper"><!-- Your content goes here -->
+        <div id="map"></div>
+    </div>
+    
+  </div>
+</template>
+
+<script>
+// import store from '../store'
+import Survey from './ListView.vue'
+import Modal from './ModalView.vue'
+import store from '../store'
+
+var map;
+
+export default {
+
+  name: 'MapView',
+
+  props:{
+    showModalFull: false,
+    surveys: {
+        type: Object,
+        default: function (data) {
+            return data
+        }
+    },
+    itemMap:{
+
+    }
+  },
+
+  components: {
+
+    Modal
+    
+  },
+  data () {
+    return {
+      surveys: {}
+    }
+  },
+  route: {
+    data (){
+      return store.fetchDataFromParse().then(surveys => ({
+         surveys
+      }))
+
+    }
+  },
+
+  created () {
+
+    // console.log("this.$root: ", this.$root);
+    // console.log("Survey: ", Survey);
+
+    this.fetchData();
+
+
+
+    
+  },
+  ready (){
+
+    var self = this
+    L.mapbox.accessToken = 'pk.eyJ1IjoicnJsYXJhIiwiYSI6IjNjSlJmUkkifQ.PlJc5PGK-7-EDMmsfqYKfg';
+
+    map = L.mapbox.map('map', 'spatialdev.map-4o51gab2', { zoomControl: false });
+    map.setView([47.68021, 10.350101], 4);
+
+    map.invalidateSize();
+
+    self.layer = L.mapbox.featureLayer().addTo(map);
+
+    /**
+     * target the point to highlight
+     */
+    self.layer.on('click', function(e) {
+        
+        resetColors();
+        e.layer.feature.properties['marker-color'] = '#3f51b5';
+        e.layer.feature.properties['marker-size'] = "large";
+        e.layer.feature.properties['active'] = true;
+        self.layer.setGeoJSON(self.surveys);
+
+        self.itemMap =  e.layer.feature.properties;
+
+        console.log(self.item);
+
+        self.showModalFull = true;
+
+
+        //map.setView([e.layer.feature.geometry.coordinates[1], e.layer.feature.geometry.coordinates[0]]);
+    });
+    function onMapClick(e) {
+        resetColors();
+    }
+    map.on('click', onMapClick);
+    /**
+     * reset survey layer after there's a click
+     */
+    function resetColors() {
+        for (var i = 0; i < self.surveys.features.length; i++) {
+            self.surveys.features[i].properties['marker-size'] = "small";
+            self.surveys.features[i].properties['marker-color'] = "#3bb2d0";
+            self.surveys.features[i].properties['active'] = false;
+        }
+        self.layer.setGeoJSON(self.surveys);
+    }
+
+  },
+
+  destroyed () {
+    
+  },
+
+  methods: {
+
+    fetchData: function () {
+            var self = this;
+
+            store.fetchDataFromParse().then(function(response) {
+
+              console.log("response: ", response);
+              self.surveys = response;
+
+
+              self.updateLayer();
+  
+            });
+        },
+    updateLayer: function(){
+        var self = this;
+
+        //console.log(JSON.stringify(self.surveys));
+
+        self.layer.setGeoJSON(self.surveys);
+
+        map.fitBounds(self.layer);
+
+    }
+    
+  }
+}
+</script>
+
+<style lang="stylus">
+
+.mapWrapper {
+    /*width:350px;*/
+    /*float:left;*/
+    /*padding:10px;*/
+    height: calc(100vh - 0px);
+    background-color: darkgrey;
+}
+
+#map{
+    width: 100%;
+    height: 100%;
+    /*background-color: aqua;*/
+}
+
+</style>
