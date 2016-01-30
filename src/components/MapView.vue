@@ -1,7 +1,7 @@
 <template>
   <div class="news-view" :class="">
     <!-- item list -->
-    
+
     <div class="page-content mapWrapper"><!-- Your content goes here -->
         <div id="map"></div>
     </div>
@@ -67,7 +67,7 @@ export default {
         e.layer.feature.properties['active'] = true;
         self.layer.setGeoJSON(self.surveys);
 
-        self.item =  e.layer.feature.properties;
+        self.item =  e.layer.feature;
 
 
         //map.setView([e.layer.feature.geometry.coordinates[1], e.layer.feature.geometry.coordinates[0]]);

@@ -6,10 +6,18 @@ import ListView from './components/ListView.vue'
 import ModalView from './components/ModalView.vue'
 import LoginView from './components/LoginView.vue'
 import ListMapView from './components/ListMapView.vue'
+import lazyload from 'vue-lazyload'
+
 
 
 // install router
 Vue.use(Router)
+
+Vue.use(lazyload, {
+  error: 'dist/error.png',
+  loading: 'dist/loading.gif'
+})
+
 
 
 // routing
