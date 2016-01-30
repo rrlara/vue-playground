@@ -5,6 +5,7 @@ import MapView from './components/MapView.vue'
 import ListView from './components/ListView.vue'
 import ModalView from './components/ModalView.vue'
 import LoginView from './components/LoginView.vue'
+import ListMapView from './components/ListMapView.vue'
 
 
 // install router
@@ -18,11 +19,8 @@ router.map({
   '/login': {
     component: LoginView
   },
-  '/map': {
-    component: MapView
-  },
-  '/list': {
-    component: ListView
+  '/listmap': {
+    component: ListMapView
   }
 })
 

@@ -1,7 +1,7 @@
 {
-  "name": "vue-hackernews",
+  "name": "vue-playground",
   "version": "1.0.0",
-  "description": "HN clone with Vue.js using HN API",
+  "description": "vue-playground",
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --inline --hot --no-info",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/yyx990803/vue-hackernews.git"
+    "url": "https://github.com/rrlara/vue-playground.git"
   },
-  "author": "Evan You",
+  "author": "Rene Rodriguez",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/yyx990803/vue-hackernews/issues"
+    "url": "https://github.com/rrlara/vue-playground/issues"
   },
-  "homepage": "https://github.com/yyx990803/vue-hackernews",
+  "homepage": "https://github.com/rrlara/vue-playground",
   "devDependencies": {
     "babel-core": "^6.1.21",
     "babel-loader": "^6.1.0",

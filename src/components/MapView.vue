@@ -1,10 +1,7 @@
 <template>
   <div class="news-view" :class="">
     <!-- item list -->
-
-    <!-- Modal compnent -->
-    <modal :show.sync="showModalFull" :item="itemMap"></modal>
-
+    
     <div class="page-content mapWrapper"><!-- Your content goes here -->
         <div id="map"></div>
     </div>
@@ -15,7 +12,7 @@
 <script>
 // import store from '../store'
 import Survey from './ListView.vue'
-import Modal from './ModalView.vue'
+// import Modal from './ModalView.vue'
 import store from '../store'
 
 var map;
@@ -25,45 +22,25 @@ export default {
   name: 'MapView',
 
   props:{
-    showModalFull: false,
     surveys: {
         type: Object,
         default: function (data) {
             return data
         }
     },
-    itemMap:{
+    item: {}
+  },
 
+  watch: {
+    surveys: function(){
+      this.updateLayer();
     }
   },
 
   components: {
-
-    Modal
     
   },
-  data () {
-    return {
-      surveys: {}
-    }
-  },
-  route: {
-    data (){
-      return store.fetchDataFromParse().then(surveys => ({
-         surveys
-      }))
-
-    }
-  },
-
   created () {
-
-    // console.log("this.$root: ", this.$root);
-    // console.log("Survey: ", Survey);
-
-    this.fetchData();
-
-
 
     
   },
@@ -90,11 +67,7 @@ export default {
         e.layer.feature.properties['active'] = true;
         self.layer.setGeoJSON(self.surveys);
 
-        self.itemMap =  e.layer.feature.properties;
-
-        console.log(self.item);
-
-        self.showModalFull = true;
+        self.item =  e.layer.feature.properties;
 
 
         //map.setView([e.layer.feature.geometry.coordinates[1], e.layer.feature.geometry.coordinates[0]]);
@@ -123,19 +96,6 @@ export default {
 
   methods: {
 
-    fetchData: function () {
-            var self = this;
-
-            store.fetchDataFromParse().then(function(response) {
-
-              console.log("response: ", response);
-              self.surveys = response;
-
-
-              self.updateLayer();
-  
-            });
-        },
     updateLayer: function(){
         var self = this;
 

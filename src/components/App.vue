@@ -6,8 +6,7 @@
         <img src="https://news.ycombinator.com/y18.gif">
       </a>
       <h1><a href="#">Servir Admin</a></h1>
-      <h1>/ <a href="#/list">List</a></h1>
-      <h1>/ <a href="#/map">Map</a></h1>
+      <h1>/ <a href="#/listmap">listmap</a></h1>
       <span class="source">
         Built with <a href="http://vuejs.org" target="_blank">Vue.js</a> |
         <!-- <a href="https://github.com/yyx990803/vue-hackernews" target="_blank">Source</a> -->
