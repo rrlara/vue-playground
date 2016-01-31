@@ -1,5 +1,5 @@
-var app_id = "t8WGKp59jCJ048owVTG8Ui5l86hc8yrHxQVm3mVS";
-var js_key = "629XQDdUUc1q1A33BA7T1MoZTVj3DBq6ALjnqAId";
+var app_id = "f978idlmBlmLY2CnQwovpPtQaFwvALWhDlf6RE53";
+var js_key = "yFJzzjG5oasySFmbNPumsxCaUofcolddTUIDQAKK";
 Parse.initialize(app_id, js_key);
 
 import { EventEmitter } from 'events'
@@ -23,8 +23,8 @@ store.fetchDataFromParse = function(){
                 response.error('Query failed, check logs')
             }
 
-            var query = new Parse.Query('devSurveySubmissions')
-            query.equalTo("approved", true);
+            var query = new Parse.Query('washingtondc')
+            // query.equalTo("approved", true);
             var objects = []
             var totalObjects
 
@@ -55,7 +55,7 @@ store.fetchDataFromParse = function(){
                         loop()
                         // Reslve the promise with all the objects when we have them
                     } else {
-                    	var realData = GeoJSON.parse(objects, {Point: ['lat', 'lng'],
+                    	var realData = GeoJSON.parse(objects, {Point: ['latitude', 'longitude'],
 					        extra: {
 					            'marker-size': "small",
 					            'marker-color':"#3bb2d0",

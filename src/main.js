@@ -14,8 +14,8 @@ import lazyload from 'vue-lazyload'
 Vue.use(Router)
 
 Vue.use(lazyload, {
-  error: 'dist/error.png',
-  loading: 'dist/loading.gif'
+  error: './img/error.png',
+  loading: './img/loading-spin.svg'
 })
 
 

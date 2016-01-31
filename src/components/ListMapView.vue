@@ -5,7 +5,7 @@
       <!-- Modal compnent -->
       <modal-view :show.sync="showModalFull" :item.sync="item"></modal-view>
 
-    <div class="page-content mapWrapper col-xs-12 col-md-3">
+    <div class="page-content col-xs-12 col-md-3">
     <!-- List View Component -->
         <list-view :surveys="surveys" :item.sync="item"></list-view>
     </div>
