@@ -61,10 +61,10 @@ export default {
 
   methods: {
   
-      clickedItem: function(item){
+      clickedItem: function(itemclicked){
         
         var self = this;
-        self.item = item;
+        self.item = itemclicked;
 
       }
     
