@@ -23,7 +23,7 @@ store.fetchDataFromParse = function(){
                 response.error('Query failed, check logs')
             }
 
-            var query = new Parse.Query('washingtondc')
+            var query = new Parse.Query('HawaiiTrip')
             // query.equalTo("approved", true);
             var objects = []
             var totalObjects
@@ -64,7 +64,7 @@ store.fetchDataFromParse = function(){
 					        }
 					    });
                         promise.resolve(realData);
-                        // console.log("getAllApprovedParseData: ", objects);
+                        console.log("getAllApprovedParseData: ", realData);
                     }
                 }
 

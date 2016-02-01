@@ -1,26 +1,21 @@
 <template>
   <div class="news-view row">
 
-    <!-- Modal compnent -->
-    <!-- <modal :show.sync="showModalFull" :item="item"></modal> -->
-
-    <!-- <div class="listContainer"> -->
-
-      <!-- Fetch Data button -->
-      <!-- <button @click="fetchData()" class="button button-general">Fetch Data</button> -->
-    
-
+  
       <h1>Survey List</h1>
       <h4>(click on one)</h4>
       <!-- List of items from Parse.com -->
       <div v-for="item in surveys.features">
         <!-- Trigger the Modal compnent -->
-        <span @click="clickedItem(item)" :class="[item.properties.attributes.active ? 'activeItem' : '']">{{item.properties.id}}</span>
-        <div>
+        <!-- <span @click="clickedItem(item)" :class="[item.properties.attributes.active ? 'activeItem' : '']">{{item.properties.id}}</span>
+        <div> -->
+
+        <card :item='item'></card>
+
           <!-- <img width="200" style="padding: 10px 0px"
                class="dialogImages" src="{{ item.properties.attributes.photo._url }}">
         </div> -->
-        <img v-if="item.properties.attributes.photo._url" v-lazy="item.properties.attributes.photo._url" width="200" style="padding: 10px 0px">
+        <!-- <img v-if="item.properties.attributes.photo._url" v-lazy="item.properties.attributes.photo._url" width="200" style="padding: 10px 0px"> -->
       </div>
     <!-- </div> -->
     
@@ -33,6 +28,7 @@ import Modal from './ModalView.vue'
 import Button from './ui/Button.vue'
 import FormInput from './ui/FormInput.vue'
 import store from '../store' 
+import Card from './CardView.vue'
 
 export default {
 
@@ -44,7 +40,8 @@ export default {
   },
 
   components: {
-    Modal
+    Modal,
+    Card
   },
   
   created () {

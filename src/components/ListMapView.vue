@@ -5,15 +5,14 @@
       <!-- Modal compnent -->
       <modal-view :show.sync="showModalFull" :item.sync="item"></modal-view>
 
-    <div class="page-content col-xs-12 col-md-3">
+    <div class="page-content col-xs-12 col-md-12">
     <!-- List View Component -->
         <list-view :surveys="surveys" :item.sync="item"></list-view>
     </div>
 
-    <div class="page-content mapWrapper col-xs-12 col-md-9">
-    <!-- Map View Component -->
+    <!-- <div class="page-content mapWrapper col-xs-12 col-md-9">
         <map-view :surveys="surveys" :item.sync="item"></map-view>
-    </div>
+    </div> -->
     
   </div>
 </template>
