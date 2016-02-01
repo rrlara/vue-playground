@@ -7,8 +7,7 @@ import ModalView from './components/ModalView.vue'
 import LoginView from './components/LoginView.vue'
 import ListMapView from './components/ListMapView.vue'
 import lazyload from 'vue-lazyload'
-
-
+var VueValidator = require('vue-validator')
 
 // install router
 Vue.use(Router)
@@ -17,6 +16,11 @@ Vue.use(lazyload, {
   // error: './img/error.png',
   // loading: './img/loading-spin.svg'
 })
+
+//install vue-validator
+Vue.use(VueValidator),{
+  
+}
 
 
 
